@@ -48,7 +48,7 @@ strong {
 }
 
 .header.active {
-  background: #fff;
+  background: #202;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,7 +59,7 @@ strong {
 
 @media (max-width: 991.98px) {
   .header {
-    background: #fff;
+    background: #202120;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 }
@@ -131,7 +131,7 @@ strong {
   =============================================================== */
 #scrollTop {
   background: #9055A2;
-  color: #fff;
+  color: #202120;
   cursor: pointer;
   width: 150px;
   height: 40px;
@@ -1620,7 +1620,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.9);
+  color: grey;
   font-weight: 700;
   transition: all 0.3s;
 }
@@ -1822,7 +1822,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary {
-  color: #fff;
+  color: black;
   background-color: #9055A2;
   border-color: #9055A2;
 }
@@ -2387,8 +2387,8 @@ body {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
+  color: #9055A2;
+  background-color: #202;
 }
 
 a {
