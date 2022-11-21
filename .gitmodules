@@ -1,0 +1,3 @@
+[submodule "art1"]
+	path = art1
+	url = https://github.com/cdr0mii/gen_art
