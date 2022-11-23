@@ -20,10 +20,11 @@ class App2 extends React.Component {
 
     this.d = new Date();
     this.seconds = Math.round(this.d.getTime() / this.second);
+    
   }
 
   drawFlower(p, diam) {
-    p.translate(1080/2,1080/2);
+    p.translate(960/2,960/2);
     p.rotate(p.millis()/10000);
     //p.angleMode(p.DEGREES);
     //p.rotate(90);
@@ -67,7 +68,7 @@ class App2 extends React.Component {
   Sketch = (p) => {
 
     p.setup = () => {
-      p.createCanvas(1080, 1080);
+      p.createCanvas(960, 960);
       //p.noStroke()
       //p.noFill()
       this.new_fill = 0
@@ -205,12 +206,77 @@ class App2 extends React.Component {
   render() {
     return (
       <div ref={this.myRef}>
+      <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <title>Rom's Portfolio</title>
+      <meta name="description" content=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="robots" content="all,follow"/>
+      
+      <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
+      
+      <link rel="stylesheet" href="vendor/owl.carousel2/assets/owl.carousel.min.css"/>
+      <link rel="stylesheet" href="vendor/owl.carousel2/assets/owl.theme.default.min.css"/>
+      
+      <link rel="stylesheet" href="vendor/modal-video/css/modal-video.min.css"/>
+      
+      <link rel="stylesheet" href="vendor/leaflet/leaflet.css"/>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700&amp;font-display=swap"/>
+      
+      <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet"/>
+      
+      <link rel="stylesheet" href="css/custom.css"/>
+      
+      <link rel="shortcut icon" href="img/favicon.png"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>   
+    </head>
 
+    <header class="header fixed-top header-animated">
+      <nav class="navbar navbar-expand-lg navbar-light py-3">
+        <div class="container">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="navbar-brand">
+              |  rom.valme@gmail.com | &nbsp;
+                <a  href="https://github.com/cdr0mii"><i class="fa fa-github-square"></i></a> &nbsp; | &nbsp;
+                <a  href="https://www.instagram.com/r_m_ld/"><i class="fa fa-instagram"></i></a> &nbsp; |
+              </li>
+              </ul>
+              </div>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+              
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="projects.html">Projects</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="blogs.html">Blogs</a>
+              </li>
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="dream.html">Dream</a>
+              </li>
+              <li class="nav-item mr-2">
+              <button class="btn btn-primary" type="button" data-target="#quoteForm" data-toggle="modal" onclick="window.open('Rom Valme Resume.pdf')">Resume</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
       </div>
     )
   }
 }
 export default App2;
+
 
 ReactDOM.render(
   <App2 />,

@@ -1,26 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import {Link} from "react-router-dom";
-import { HashRouter as Router, Routes, Route}
+import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
 import App2 from "./proj1";
-import Landing from "./Landing";
 
-function App() {
+function Landing() {
   return (
     // NAVBAR https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
     <div>
     {/**/}
-    <Router>
-    <Routes>
-        {/* Render the login component alone if we're on /login */}
-        <Route path='/proj1' element={<App2/>} />
-
-        {/* Otherwise, render the Landing component */}
-        <Route path='/' element={<Landing/>} />
-    </Routes>
-    </Router>
-    {/*
     <head>
       <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
       <title>Rom's Portfolio</title>
@@ -87,14 +76,14 @@ function App() {
       </nav>
     </header>
 
-    {/* HERO SECTION
+    {/* HERO SECTION*/}
     <section class="hero hero-home with-pattern d-flex align-items-center py-5">
       <div class="container py-5 mt-0">
         <div class="row align-items-center">
           <div class="col-md-6 mb-5 mb-md-0">
             <h2 class="mb-3"> <span class="text-primary">Rom Valme</span> </h2> 
             <p> <h5> Hey there ! </h5>
-            <a href="/#/proj1">proj1</a> <br/>
+            <a href="#/proj1">proj1</a> <br/>
             Before you start browsing around, I would like to tell you a few things about me. 
             As a computer science professional,
              I like to create solutions to interesting problems using software.</p>
@@ -123,9 +112,9 @@ function App() {
   <a class="text-primary" href="https://bootstraptemple.com/p/corporate"> Bootstrap Temple </a></p>
   </footer>
 
-    {/* Scroll top button 
+    {/* Scroll top button */}
     <div class="scroll-top-btn" id="scrollTop"><i class="fas fa-long-arrow-alt-up"></i><span class="font-weight-bold text-uppercase small">To the Top</span></div>
-    {/* JavaScript files
+    {/* JavaScript files*/} 
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/owl.carousel2/owl.carousel.min.js"></script>
@@ -133,13 +122,13 @@ function App() {
     <script src="vendor/leaflet/leaflet.js"></script>
     <script src="js/front.js"></script>
 
-    {/* FontAwesome CSS - loading as last, so it doesn't block rendering 
+    {/* FontAwesome CSS - loading as last, so it doesn't block rendering */}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
-  */}
+
     </div>
 );
 }
 
-export default App;
+export default Landing;
