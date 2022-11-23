@@ -83,7 +83,7 @@ function Landing() {
           <div class="col-md-6 mb-5 mb-md-0">
             <h2 class="mb-3"> <span class="text-primary">Rom Valme</span> </h2> 
             <p> <h5> Hey there ! </h5>
-            <a href="#/proj1">proj1</a> <br/>
+            
             Before you start browsing around, I would like to tell you a few things about me. 
             As a computer science professional,
              I like to create solutions to interesting problems using software.</p>
