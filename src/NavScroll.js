@@ -12,23 +12,23 @@ function NavScroll() {
       <Container fluid className="container">
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-        <div>
+        <div  id="NavbarSupportedContent">
             <ul className="navbar-nav">
               <li className="navbar-brand">
-              |  rom.valme@gmail.com | &nbsp;
-                <a  href="https://github.com/cdr0mii"><i class="fa fa-github-square"></i></a> &nbsp; | &nbsp;
-                <a  href="https://www.instagram.com/r_m_ld/"><i class="fa fa-instagram"></i></a> &nbsp; |
+                |  rom.valme@gmail.com | &nbsp;
+                <a  href="https://github.com/cdr0mii"><i className="fa fa-github-square"></i></a> &nbsp; | &nbsp;
+                <a  href="https://www.instagram.com/r_m_ld/"><i className="fa fa-instagram"></i></a> &nbsp; |
               </li>
               </ul>
         </div>
           <Nav className="ml-auto" navbarScroll>
-            <Nav.Link className="nav-link" href="index.html">About</Nav.Link>
-            <Nav.Link className="nav-link " href="projects.html">Projects</Nav.Link>
-            <Nav.Link  className="nav-link" href="blogs.html">Blogs</Nav.Link>
-            <Nav.Link  className="nav-link" href="Dream.html">Dream</Nav.Link>
+            <Nav.Link className="nav-item" href="index.html">About</Nav.Link>
+            <Nav.Link className="nav-item" href="projects.html">Projects</Nav.Link>
+            <Nav.Link  className="nav-item" href="blogs.html">Blogs</Nav.Link>
+            <Nav.Link  className="nav-item mr-2" href="Dream.html">Dream</Nav.Link>
           </Nav>
           
-            <Button className="btn btn-primary" type="button" data-target="#quoteForm" data-toggle="modal" onClick={() =>{window.open('Rom Valme Resume.pdf')} }>Resume</Button>
+            <Button className="btn btn-primary mr-2" type="button" data-target="#quoteForm" data-toggle="modal" onClick={() =>{window.open('Rom Valme Resume.pdf')} }>Resume</Button>
 
         </Navbar.Collapse>
       </Container>
