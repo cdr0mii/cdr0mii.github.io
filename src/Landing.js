@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
 import App2 from "./proj1";
+import NavScroll from './NavScroll';
 
 function Landing() {
   return (
@@ -34,8 +35,9 @@ function Landing() {
       
       <link rel="shortcut icon" href="img/favicon.png"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>   
+      
     </head>
-
+{/*
     <header class="header fixed-top header-animated">
       <nav class="navbar navbar-expand-lg navbar-light py-3">
         <div class="container">
@@ -75,6 +77,8 @@ function Landing() {
         </div>
       </nav>
     </header>
+  */}
+  <div><NavScroll /></div>
 
     {/* HERO SECTION*/}
     <section class="hero hero-home with-pattern d-flex align-items-center py-5">

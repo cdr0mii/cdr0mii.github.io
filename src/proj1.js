@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import p5 from "p5";
+import NavScroll from './NavScroll';
 //import { timingSafeEqual } from 'crypto';
 //sacred symbols
 //alot of parameters that could be turned into sliders
@@ -232,45 +233,7 @@ class App2 extends React.Component {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>   
     </head>
 
-    <header class="header fixed-top header-animated">
-      <nav class="navbar navbar-expand-lg navbar-light py-3">
-        <div class="container">
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li class="navbar-brand">
-              |  rom.valme@gmail.com | &nbsp;
-                <a  href="https://github.com/cdr0mii"><i class="fa fa-github-square"></i></a> &nbsp; | &nbsp;
-                <a  href="https://www.instagram.com/r_m_ld/"><i class="fa fa-instagram"></i></a> &nbsp; |
-              </li>
-              </ul>
-              </div>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-              
-              <li class="nav-item">
-                <a class="nav-link active" href="index.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="projects.html">Projects</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="blogs.html">Blogs</a>
-              </li>
-              <li class="nav-item mr-2">
-                <a class="nav-link" href="dream.html">Dream</a>
-              </li>
-              <li class="nav-item mr-2">
-              <button class="btn btn-primary" type="button" data-target="#quoteForm" data-toggle="modal" onclick="window.open('Rom Valme Resume.pdf')">Resume</button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <NavScroll/>
       </div>
     )
   }
