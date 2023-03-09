@@ -24,10 +24,288 @@ class App2 extends React.Component {
     
   }
 
+  drawFlower_arc(p,diam){
+    p.noFill();
+    p.translate(960/2,960/2);
+    let t = p.millis()
+    //p.rotate(t/5000);
+    p.angleMode(p.DEGREES);
+    p.rotate(((t*.025) % 45));
+    p.beginShape();
+    var rad = diam/2; // radius of circle
+    var cp = rad/2; // center point of circle
+    var ip = Math.sqrt(rad**2 - cp**2); //intersect point of two starting circles
+    
+    //Left
+    p.rotate(45);
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    //p.rotate(45);
+    p.rotate(45)
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    //p.rotate(-45);
+    p.rotate(45)
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    p.rotate(45)
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    p.rotate(45)
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    p.rotate(45)
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    p.rotate(45)
+    p.arc(-rad, 0,diam,diam, 0, 180);
+    p.rotate(45)
+    //right
+    p.rotate((-(t*.025) % 45)*2);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+    p.arc(rad, 0,diam,diam, 0, 180);
+    p.rotate(45);
+
+
+
+    //p.ellipse(0,rad,diam,diam);
+    //left
+    // p.ellipse(-rad,0,diam,diam);
+    // //right
+  
+    // p.ellipse(rad,0,diam,diam);
+  /*
+    p.ellipse(-2*cp,-2*ip,diam,diam);
+    p.ellipse(2*cp,-2*ip,diam,diam);
+    p.ellipse(-2*rad,0,diam,diam);
+    p.ellipse(-2*cp,2*ip,diam,diam);
+    p.ellipse(2*cp,2*ip,diam,diam);
+    p.ellipse(2*rad,0,diam,diam);
+  
+    p.ellipse(0,-2*ip,diam,diam);
+    p.ellipse(3*cp,ip,diam,diam);
+    p.ellipse(-1.5*rad,-ip,diam,diam);
+    p.ellipse(-3*cp,ip,diam,diam);
+    p.ellipse(0,2*ip,diam,diam);
+    p.ellipse(1.5*rad,-ip,diam,diam);
+  */
+  
+    //p.rotate((-(t*.015) % 360)*2);
+    //p.rotate(-t,2500);
+    // p.rotate(45);
+    //p.ellipse(0,-rad,diam,diam);
+    //p.ellipse(0,rad,diam,diam);
+    //left
+    //p.ellipse(-rad,0,diam,diam);
+    //right
+  
+   //p.ellipse(rad,0,diam,diam);
+  
+  
+    //center
+    //p.ellipse(0,0,diam,diam);
+    
+    //p.rotate((-(t*.025 % 45)*2));
+    //p.ellipse(0,-rad,diam,diam);
+    //p.ellipse(0,rad,diam,diam);
+    //left
+    // p.ellipse(-rad,0,diam,diam);
+    // //right
+  
+    // p.ellipse(rad,0,diam,diam);
+  /*
+    p.ellipse(-2*cp,-2*ip,diam,diam);
+    p.ellipse(2*cp,-2*ip,diam,diam);
+    p.ellipse(-2*rad,0,diam,diam);
+    p.ellipse(-2*cp,2*ip,diam,diam);
+    p.ellipse(2*cp,2*ip,diam,diam);
+    p.ellipse(2*rad,0,diam,diam);
+  
+    p.ellipse(0,-2*ip,diam,diam);
+    p.ellipse(3*cp,ip,diam,diam);
+    p.ellipse(-1.5*rad,-ip,diam,diam);
+    p.ellipse(-3*cp,ip,diam,diam);
+    p.ellipse(0,2*ip,diam,diam);
+    p.ellipse(1.5*rad,-ip,diam,diam);
+  */
+  
+    //p.rotate((-(t*.015) % 360)*2);
+    //p.rotate(-t,2500);
+    // p.rotate(45);
+    // p.ellipse(0,-rad,diam,diam);
+    // p.ellipse(0,rad,diam,diam);
+    // //left
+    // p.ellipse(-rad,0,diam,diam);
+    // //right
+  
+    // p.ellipse(rad,0,diam,diam);
+    
+    // circles below to show where intersect point is 
+    //p.ellipse(500,350,200,200);
+    //p.ellipse(600,350,200,200);
+  
+  
+    
+    //p.ellipse(550,436.6,200,200);
+    //p.ellipse(450,436.6,200,200);
+  
+    //p.ellipse(550,350,200,200);
+    //p.rotate(-p.millis()/5000);
+    p.fill(this.new_fill,this.strk[1],this.strk[2], 50)
+    p.ellipse(0,0,2*diam,2*diam);
+  /*
+    p.ellipse(-2*cp,-2*ip,diam,diam);
+    p.ellipse(2*cp,-2*ip,diam,diam);
+    p.ellipse(-2*rad,0,diam,diam);
+    p.ellipse(-2*cp,2*ip,diam,diam);
+    p.ellipse(2*cp,2*ip,diam,diam);
+    p.ellipse(2*rad,0,diam,diam);
+  
+    p.ellipse(0,-2*ip,diam,diam);
+    p.ellipse(3*cp,ip,diam,diam);
+    p.ellipse(-1.5*rad,-ip,diam,diam);
+    p.ellipse(-3*cp,ip,diam,diam);
+    p.ellipse(0,2*ip,diam,diam);
+    p.ellipse(1.5*rad,-ip,diam,diam);
+  
+    p.ellipse(0,0,3*diam,3*diam);
+  */
+    p.endShape(p.CLOSE);
+  
+  }  
+
+
+drawFlower4(p,diam){
+  p.translate(960/2,960/2);
+  let t = p.millis()
+  //p.rotate(t/5000);
+  p.angleMode(p.DEGREES);
+  p.rotate(((t*.025) % 45));
+  p.beginShape();
+  var rad = diam/2; // radius of circle
+  var cp = rad/2; // center point of circle
+  var ip = Math.sqrt(rad**2 - cp**2); //intersect point of two starting circles
+  
+  p.ellipse(0,-rad,diam,diam);
+  p.ellipse(0,rad,diam,diam);
+  //left
+  p.ellipse(-rad,0,diam,diam);
+  //right
+
+  p.ellipse(rad,0,diam,diam);
+/*
+  p.ellipse(-2*cp,-2*ip,diam,diam);
+  p.ellipse(2*cp,-2*ip,diam,diam);
+  p.ellipse(-2*rad,0,diam,diam);
+  p.ellipse(-2*cp,2*ip,diam,diam);
+  p.ellipse(2*cp,2*ip,diam,diam);
+  p.ellipse(2*rad,0,diam,diam);
+
+  p.ellipse(0,-2*ip,diam,diam);
+  p.ellipse(3*cp,ip,diam,diam);
+  p.ellipse(-1.5*rad,-ip,diam,diam);
+  p.ellipse(-3*cp,ip,diam,diam);
+  p.ellipse(0,2*ip,diam,diam);
+  p.ellipse(1.5*rad,-ip,diam,diam);
+*/
+
+  //p.rotate((-(t*.015) % 360)*2);
+  //p.rotate(-t,2500);
+  p.rotate(45);
+  p.ellipse(0,-rad,diam,diam);
+  p.ellipse(0,rad,diam,diam);
+  //left
+  p.ellipse(-rad,0,diam,diam);
+  //right
+
+  p.ellipse(rad,0,diam,diam);
+
+
+  //center
+  //p.ellipse(0,0,diam,diam);
+  
+  p.rotate((-(t*.025 % 45)*2));
+  p.ellipse(0,-rad,diam,diam);
+  p.ellipse(0,rad,diam,diam);
+  //left
+  p.ellipse(-rad,0,diam,diam);
+  //right
+
+  p.ellipse(rad,0,diam,diam);
+/*
+  p.ellipse(-2*cp,-2*ip,diam,diam);
+  p.ellipse(2*cp,-2*ip,diam,diam);
+  p.ellipse(-2*rad,0,diam,diam);
+  p.ellipse(-2*cp,2*ip,diam,diam);
+  p.ellipse(2*cp,2*ip,diam,diam);
+  p.ellipse(2*rad,0,diam,diam);
+
+  p.ellipse(0,-2*ip,diam,diam);
+  p.ellipse(3*cp,ip,diam,diam);
+  p.ellipse(-1.5*rad,-ip,diam,diam);
+  p.ellipse(-3*cp,ip,diam,diam);
+  p.ellipse(0,2*ip,diam,diam);
+  p.ellipse(1.5*rad,-ip,diam,diam);
+*/
+
+  //p.rotate((-(t*.015) % 360)*2);
+  //p.rotate(-t,2500);
+  p.rotate(45);
+  p.ellipse(0,-rad,diam,diam);
+  p.ellipse(0,rad,diam,diam);
+  //left
+  p.ellipse(-rad,0,diam,diam);
+  //right
+
+  p.ellipse(rad,0,diam,diam);
+  
+  // circles below to show where intersect point is 
+  //p.ellipse(500,350,200,200);
+  //p.ellipse(600,350,200,200);
+
+
+  
+  //p.ellipse(550,436.6,200,200);
+  //p.ellipse(450,436.6,200,200);
+
+  //p.ellipse(550,350,200,200);
+  //p.rotate(-p.millis()/5000);
+  p.ellipse(0,0,2*diam,2*diam);
+/*
+  p.ellipse(-2*cp,-2*ip,diam,diam);
+  p.ellipse(2*cp,-2*ip,diam,diam);
+  p.ellipse(-2*rad,0,diam,diam);
+  p.ellipse(-2*cp,2*ip,diam,diam);
+  p.ellipse(2*cp,2*ip,diam,diam);
+  p.ellipse(2*rad,0,diam,diam);
+
+  p.ellipse(0,-2*ip,diam,diam);
+  p.ellipse(3*cp,ip,diam,diam);
+  p.ellipse(-1.5*rad,-ip,diam,diam);
+  p.ellipse(-3*cp,ip,diam,diam);
+  p.ellipse(0,2*ip,diam,diam);
+  p.ellipse(1.5*rad,-ip,diam,diam);
+
+  p.ellipse(0,0,3*diam,3*diam);
+*/
+  p.endShape(p.CLOSE);
+
+}
   drawFlower(p, diam) {
     p.translate(960/2,960/2);
+    p.angleMode(p.RADIANS);
     p.rotate(p.millis()/10000);
-    //p.angleMode(p.DEGREES);
     //p.rotate(90);
     p.beginShape();
     var rad = diam/2; // radius of circle
@@ -66,12 +344,17 @@ class App2 extends React.Component {
     p.endShape(p.CLOSE);
   }
 
+
   Sketch = (p) => {
 
+    let button;
     p.setup = () => {
       p.createCanvas(960, 960);
       //p.noStroke()
       //p.noFill()
+      button = p.createButton("Change Viz");
+      button.position(0, 100);
+      button.mousePressed(changeBG);
       this.new_fill = 0
       this.flag = 0;
       this.strk = [Math.random()*255, Math.random()*255, Math.random()*255];
@@ -100,13 +383,36 @@ class App2 extends React.Component {
 
     }
 
+    let anim = 0
+    // so many issues for a single button
+    // button position
+    // variable not being global, not changing outside func.
+    // correct function setup/naming
+    function changeBG(){
+      //console.log("in changeBG, button pressed")
+      anim = (anim + 1) % 3;
+    }
+
     p.draw = () => {
       
+      console.log(anim)
       p.background(80);
       //p.fill(this.new_fill, 50, 200);
       p.stroke(this.new_fill,this.strk[1],this.strk[2]);
+      if(anim === 0){
       p.fill(this.new_fill,this.strk[1],this.strk[2], 100)
-      this.drawFlower(p, 200);
+        p.strokeWeight(1);
+        this.drawFlower(p, 200);
+      } else if (anim === 1){
+      p.fill(this.new_fill,this.strk[1],this.strk[2], 100)
+        p.strokeWeight(2.5);
+        this.drawFlower_arc(p, 300);
+      } else if (anim === 2){
+      p.fill(this.new_fill,this.strk[1],this.strk[2], 50)
+        p.strokeWeight(1);
+        this.drawFlower4(p, 300);
+      
+      }
       //this.new_fill += 1;
       if(this.new_fill<= 255 && this.flag == 0){
         this.new_fill +=1.5;
@@ -124,79 +430,6 @@ class App2 extends React.Component {
       {
         this.new_fill -= 1.5;
       }
-      
-      
-      /*
-      p.translate(1080/2,1080/2);
-      p.rotate(p.millis()/1000);
-      p.beginShape();
-      p.ellipse(-50,-86.6,200,200);
-      p.ellipse(50,-86.6,200,200);
-      p.ellipse(0,0,200,200);
-      // circles below to show where intersect point is 
-      //p.ellipse(500,350,200,200);
-      //p.ellipse(600,350,200,200);
-      p.ellipse(-100,0,200,200);
-      p.ellipse(-50,86.6,200,200);
-      //p.ellipse(550,436.6,200,200);
-      //p.ellipse(450,436.6,200,200);
-      p.ellipse(50,86.6,200,200);
-      p.ellipse(100,0,200,200);
-      //p.ellipse(550,350,200,200);
-      p.endShape(p.CLOSE);
-      */
-      /*
-      p.ellipse(500,250,200,200);
-      p.ellipse(500,350,200,200);
-      p.ellipse(600,250,200,200);
-      p.ellipse(600,350,200,200);
-      p.ellipse(550,337,200,200);
-      */
-      //line up intersecting circles directly below or above
-      //45deg must touch center of circle
-      //let t1 = Math.round(this.d.getTime() / this.second);
-      /*
-      p.translate(p.width/2, p.height/2)
-      if (p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
-        let mx = p.mouseX - p.width / 2;
-        let my = p.mouseY - p.height / 2;
-        
-      
-      //console.log(this.seconds)
-      if(p.mouseIsPressed){
-        let d2 = new Date();
-        let t1 = Math.round(d2.getTime() / this.second);
-        if(t1 - .05 > this.seconds){
-          p.ellipse(mx,my,50,50);
-          p.fill(Math.random()*255, Math.random()*255, Math.random()*255);
-          this.seconds = t1
-        }
-       */
-        /*
-        for (let i = 0; i < this.symmetry; i++) {
-          p.rotate(this.angle);
-          //p.push();
-          //p.scale(1, -1);
-          
-          p.ellipse(mx,my,50,50);
-          
-          //p.pop();
-          this.seconds = t1
-        }
-        */
-      
-      //} 
-      //}
-      /*
-      if(p.mouseIsPressed){
-        p.fill(0);
-      } else {
-        p.fill(255);
-      }
-      p.background(220);
-      p.ellipse(p.mouseX,p.mouseY,20,20);
-      //p.rect(x,y,50,50);
-      */
     }
   }
 
