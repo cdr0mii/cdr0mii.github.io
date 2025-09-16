@@ -25,7 +25,7 @@ function NavScroll() {
             <Nav.Link className="nav-item" href="index.html">About</Nav.Link>
             <Nav.Link className="nav-item" href="projects.html">Projects</Nav.Link>
             <Nav.Link  className="nav-item" href="blogs.html">Blogs</Nav.Link>
-            <Nav.Link  className="nav-item mr-2" href="Dream.html">Dream</Nav.Link>
+            <Nav.Link  className="nav-item mr-2" href="dream.html">Dream</Nav.Link>
           </Nav>
           
             <Button className="btn btn-primary mr-2" type="button" data-target="#quoteForm" data-toggle="modal" onClick={() =>{window.open('Rom Valme Resume.pdf')} }>Resume</Button>
