@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Paint App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        #canvas {
+            touch-action: none;
+            cursor: crosshair;
+        }
+        .tool-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-blue-600 mb-2">Browser Paint</h1>
+            <p class="text-gray-600">Create your masterpiece!</p>
+        </header>
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <!-- Toolbar -->
+            <div class="bg-gray-800 text-white p-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-2">
+                    <button id="brush" class="tool-btn active p-2 rounded-md hover:bg-gray-700">
+                        <i data-feather="edit-3"></i>
+                    </button>
+                    <button id="eraser" class="tool-btn p-2 rounded-md hover:bg-gray-700">
+                        <i data-feather="x-square"></i>
+                    </button>
+                    <button id="rectangle" class="tool-btn p-2 rounded-md hover:bg-gray-700">
+                        <i data-feather="square"></i>
+                    </button>
+                    <button id="circle" class="tool-btn p-2 rounded-md hover:bg-gray-700">
+                        <i data-feather="circle"></i>
+                    </button>
+                    <button id="line" class="tool-btn p-2 rounded-md hover:bg-gray-700">
+                        <i data-feather="minus"></i>
+                    </button>
+                    <button id="clear" class="p-2 rounded-md hover:bg-gray-700">
+                        <i data-feather="trash-2"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <label for="size" class="mr-2"><i data-feather="minimize-2"></i></label>
+                        <input type="range" id="size" min="1" max="50" value="5" class="w-24">
+                        <span id="sizeValue" class="ml-2 w-8 text-center">5</span>
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="color" class="mr-2"><i data-feather="droplet"></i></label>
+                        <input type="color" id="color" value="#000000" class="w-8 h-8">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas -->
+            <div class="p-4">
+                <canvas id="canvas" class="border border-gray-300 rounded-md w-full h-[500px] touch-none"></canvas>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-gray-500">
+            <p>Draw with your mouse or finger on touch devices. Use the toolbar to change tools.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            feather.replace();
+            
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const brushBtn = document.getElementById('brush');
+            const eraserBtn = document.getElementById('eraser');
+            const rectangleBtn = document.getElementById('rectangle');
+            const circleBtn = document.getElementById('circle');
+            const lineBtn = document.getElementById('line');
+            const clearBtn = document.getElementById('clear');
+            const sizeInput = document.getElementById('size');
+            const sizeValue = document.getElementById('sizeValue');
+            const colorInput = document.getElementById('color');
+            
+            let isDrawing = false;
+            let currentTool = 'brush';
+            let currentColor = colorInput.value;
+            let currentSize = parseInt(sizeInput.value);
+            let startX, startY;
+            
+            // Set canvas size
+            function resizeCanvas() {
+                const container = canvas.parentElement;
+                canvas.width = container.clientWidth;
+                canvas.height = 500; // Fixed height for drawing area
+            }
+            
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Drawing functions
+            function startDrawing(e) {
+                isDrawing = true;
+                
+                // Get starting position
+                if (e.type.includes('touch')) {
+                    const rect = canvas.getBoundingClientRect();
+                    startX = e.touches[0].clientX - rect.left;
+                    startY = e.touches[0].clientY - rect.top;
+                } else {
+                    startX = e.offsetX;
+                    startY = e.offsetY;
+                }
+                
+                if (currentTool === 'brush' || currentTool === 'eraser') {
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                }
+            }
+            
+            function stopDrawing() {
+                isDrawing = false;
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                // Get current position
+                let x, y;
+                if (e.type.includes('touch')) {
+                    const rect = canvas.getBoundingClientRect();
+                    x = e.touches[0].clientX - rect.left;
+                    y = e.touches[0].clientY - rect.top;
+                } else {
+                    x = e.offsetX;
+                    y = e.offsetY;
+                }
+                
+                // Save current canvas state
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = canvas.width;
+                tempCanvas.height = canvas.height;
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.drawImage(canvas, 0, 0);
+                
+                // Clear canvas to draw preview
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(tempCanvas, 0, 0);
+                
+                // Set drawing properties
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.lineWidth = currentSize;
+                
+                if (currentTool === 'eraser') {
+                    ctx.globalCompositeOperation = 'destination-out';
+                    ctx.strokeStyle = 'rgba(0,0,0,1)'; // Needed for eraser to work
+                } else {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = currentColor;
+                    ctx.fillStyle = currentColor;
+                }
+                
+                // Draw based on current tool
+                switch(currentTool) {
+                    case 'brush':
+                        ctx.lineTo(x, y);
+                        ctx.stroke();
+                        break;
+                    case 'eraser':
+                        ctx.lineTo(x, y);
+                        ctx.stroke();
+                        // Restore the composite operation after erasing
+                        ctx.globalCompositeOperation = 'source-over';
+                        break;
+                    case 'rectangle':
+                        ctx.beginPath();
+                        ctx.rect(startX, startY, x - startX, y - startY);
+                        ctx.stroke();
+                        break;
+                    case 'circle':
+                        const radius = Math.sqrt(Math.pow(x - startX, 2) + Math.pow(y - startY, 2));
+                        ctx.beginPath();
+                        ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        break;
+                    case 'line':
+                        ctx.beginPath();
+                        ctx.moveTo(startX, startY);
+                        ctx.lineTo(x, y);
+                        ctx.stroke();
+                        break;
+                }
+            }
+            
+            // Event listeners
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // Touch support
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                startDrawing(e);
+            });
+            
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                draw(e);
+            });
+            
+            canvas.addEventListener('touchend', stopDrawing);
+            
+            // Tool buttons
+            brushBtn.addEventListener('click', () => {
+                currentTool = 'brush';
+                brushBtn.classList.add('active');
+                eraserBtn.classList.remove('active');
+                rectangleBtn.classList.remove('active');
+                circleBtn.classList.remove('active');
+                lineBtn.classList.remove('active');
+            });
+            
+            eraserBtn.addEventListener('click', () => {
+                currentTool = 'eraser';
+                eraserBtn.classList.add('active');
+                brushBtn.classList.remove('active');
+                rectangleBtn.classList.remove('active');
+                circleBtn.classList.remove('active');
+                lineBtn.classList.remove('active');
+            });
+
+            rectangleBtn.addEventListener('click', () => {
+                currentTool = 'rectangle';
+                rectangleBtn.classList.add('active');
+                brushBtn.classList.remove('active');
+                eraserBtn.classList.remove('active');
+                circleBtn.classList.remove('active');
+                lineBtn.classList.remove('active');
+            });
+
+            circleBtn.addEventListener('click', () => {
+                currentTool = 'circle';
+                circleBtn.classList.add('active');
+                brushBtn.classList.remove('active');
+                eraserBtn.classList.remove('active');
+                rectangleBtn.classList.remove('active');
+                lineBtn.classList.remove('active');
+            });
+
+            lineBtn.addEventListener('click', () => {
+                currentTool = 'line';
+                lineBtn.classList.add('active');
+                brushBtn.classList.remove('active');
+                eraserBtn.classList.remove('active');
+                rectangleBtn.classList.remove('active');
+                circleBtn.classList.remove('active');
+            });
+            
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+            
+            // Size and color controls
+            sizeInput.addEventListener('input', () => {
+                currentSize = parseInt(sizeInput.value);
+                sizeValue.textContent = currentSize;
+            });
+            
+            colorInput.addEventListener('input', () => {
+                currentColor = colorInput.value;
+            });
+        });
+    </script>
+</body>
+</html>
