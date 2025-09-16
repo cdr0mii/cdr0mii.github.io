@@ -13,7 +13,7 @@ function App() {
     {/**/}
     <Router>
     <Routes>
-        {/* Render the login component alone if we're on /login */}
+        {/* Render the firt project*/}
         <Route path='/proj1' element={<App2/>} />
 
         {/* Otherwise, render the Landing component */}
